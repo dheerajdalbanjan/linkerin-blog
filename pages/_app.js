@@ -30,6 +30,6 @@ export default function App({ Component, pageProps }) {
 
 
   }
-  return <><ads/>
+  return <>
   <Loading/><Component {...pageProps} /></>
 }

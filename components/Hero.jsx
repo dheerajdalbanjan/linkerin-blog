@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 
 const Hero = () => {
     return (
-        <div className="relative px-6 lg:px-8 -z-[2000]">
+        <div className="relative px-6 lg:px-8 ">
             <div className="mx-auto max-w-3xl py-20  sm:pt-48 ">
                 <div>
                     <div className="hidden sm:mb-8 sm:flex sm:justify-center">
@@ -28,7 +28,7 @@ const Hero = () => {
                             <motion.a
                                 whileHover={{scale:1.1}}
                                 href="#"
-                                className="inline-block rounded-lg bg-indigo-600 px-4 py-1.5 text-base font-semibold leading-7 text-white shadow-sm ring-1 ring-indigo-600 hover:bg-indigo-700 hover:ring-indigo-700"
+                                className="inline-block cursor-pointer rounded-lg bg-indigo-600 px-4 py-1.5 text-base font-semibold leading-7 text-white shadow-sm ring-1 ring-indigo-600 hover:bg-indigo-700 hover:ring-indigo-700"
                             >
                                 Get started{' '}
                                 <span className="text-indigo-200" aria-hidden="true">

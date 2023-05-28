@@ -2,6 +2,7 @@ import React from 'react'
 import { Disclosure, Popover, Transition } from '@headlessui/react'
 import Link from 'next/link'
 import { useScroll, motion, useSpring } from 'framer-motion'
+import Button from './Button'
 
 const Navbar = () => {
     const { scrollYProgress } = useScroll()
@@ -52,25 +53,36 @@ const Navbar = () => {
                     <motion.div style={{ scaleX }} className='fixed top-0 left-0 right-0 h-[4px] origin-left bg-purple-600 rounded-full'></motion.div>
                 </div>
             </div>
-            <Popover.Overlay className={'fixed inset-0 bg-black opacity-30 h-full  w-full'} />
             <Transition
-                enter="duration-200 ease-out"
-                enterFrom="opacity-0 scale-95"
-                enterTo="opacity-100 scale-100"
-                leave="duration-100 ease-in"
-                leaveFrom="opacity-100 scale-100"
-                leaveTo="opacity-0 scale-95"
+                enter="duration-500 ease-out t"
+                enterFrom="-translate-x-full"
+                enterTo="translate-x-0"
+                leave="duration-300 ease-in"
+                leaveFrom="translate-x-0"
+                leaveTo="-translate-x-full"
+                className={'z-[1500] fixed inset-0'}
             >
-                <Popover.Panel focus className={'absolute right-3 origin-top-right top-0 p-2 md:hidden w-[95%] transition-transform'}>
+            <Popover.Overlay className={'fixed inset-0 bg-black opacity-20 backdrop-blur-md h-full z-[100] w-full'} />
+            </Transition>
+            <Transition
+                enter="duration-500 ease-out delay-300"
+                enterFrom="-translate-x-full"
+                enterTo="translate-x-0"
+                leave="duration-300 ease-in"
+                leaveFrom="translate-x-0"
+                leaveTo="-translate-x-full"
+                className={'z-[1500] fixed inset-0'}
+            >
+                <Popover.Panel focus className={'fixed inset-0 md:hidden w-[50%] bg-black opacity-90  backdrop-blur-lg h-full transition-all'}>
 
-                    <div className='bg-white  ring-1 ring-black shadow-lg rounded-lg ring-opacity-5  w-full py-8 px-4'>
-                        <div className='flex flex-col space-y-2 bg-white'>
-                            <Link href={'/'} className=' font-medium px-4 py-2 rounded-lg hover:bg-gray-100 duration-300 text-gray-700 text-lg hover:text-gray-900 outline-none '>Home</Link>
-                            <Link href={'/about'} className=' font-medium px-4 py-2 rounded-lg hover:bg-gray-100 duration-300 text-gray-700 text-lg hover:text-gray-900 outline-none '>About</Link>
-                            <Link href={'/contact'} className=' font-medium px-4 py-2 rounded-lg hover:bg-gray-100 duration-300 text-gray-700 text-lg hover:text-gray-900 outline-none '>Contact</Link>
-                            <Link href={'/privacypolicy'} className=' font-medium px-4 py-2 rounded-lg hover:bg-gray-100 duration-300 text-gray-700 text-lg hover:text-gray-900 outline-none '>Privacy</Link>
+                    <div className='   py-16 px-4'>
+                        <div className='flex flex-col  space-y-2 '>
+                            <Link href={'/'} className=' font-medium px-4 py-2 rounded-lg hover:bg-gray-100 duration-500 active:scale-90  text-gray-300 text-lg hover:text-gray-900 outline-none '>Home</Link>
+                            <Link href={'/about'} className=' font-medium px-4 py-2 rounded-lg hover:bg-gray-100 duration-500 active:scale-90  text-gray-300 text-lg hover:text-gray-900 outline-none '>About</Link>
+                            <Link href={'/contact'} className=' font-medium px-4 py-2 rounded-lg hover:bg-gray-100 duration-500 active:scale-90  text-gray-300 text-lg hover:text-gray-900 outline-none '>Contact</Link>
+                            <Link href={'/privacypolicy'} className=' font-medium px-4 py-2 rounded-lg hover:bg-gray-100 duration-500 active:scale-90  text-gray-300 text-lg hover:text-gray-900 outline-none '>Privacy</Link>
                             <Disclosure>
-                                <Disclosure.Button className='flex font-medium px-4 py-2 rounded-lg hover:bg-gray-100 duration-300 text-gray-700 text-lg hover:text-gray-900 outline-none '>Blogs<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 mt-1 h-5 ml-1  transition-transform duration-300">
+                                <Disclosure.Button className='flex font-medium px-4 py-2 rounded-lg hover:bg-gray-100 duration-500 active:scale-90  text-gray-300 text-lg hover:text-gray-900 outline-none '>Blogs<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 mt-1 h-5 ml-1  transition-transform duration-300">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
                                 </svg></Disclosure.Button>
                                 <Transition
@@ -82,11 +94,11 @@ const Navbar = () => {
                                     leaveTo="transform scale-95 opacity-0"
                                 >
                                 <Disclosure.Panel className={'flex flex-col space-y-2 pl-3 ml-4 border-l-2 border-blue-300'}>
-                                    <Link href={'/blog?category=Technology'} className='text-base  px-4 py-2 rounded-lg hover:bg-gray-100 duration-300 hover:text-gray-900 text-gray-700 font-normal'>Technology</Link>
-                                    <Link href={'/blog?category=Education'} className='text-base px-4 py-2 rounded-lg hover:bg-gray-100 duration-300 hover:text-gray-900 text-gray-700 font-normal'>Education</Link>
-                                    <Link href={'/blog?category=Business'} className='text-base px-4 py-2 rounded-lg hover:bg-gray-100 duration-300 hover:text-gray-900 text-gray-700 font-normal'>Business</Link>
-                                    <Link href={'/blog?category=Sports'} className='text-base px-4 py-2 rounded-lg hover:bg-gray-100 duration-300 hover:text-gray-900 text-gray-700 font-normal'>Sports</Link>
-                                    <Link href={'/blog?category=Health'} className='text-base px-4 py-2 rounded-lg hover:bg-gray-100 duration-300 hover:text-gray-900 text-gray-700 font-normal'>Health</Link>
+                                    <Link href={'/blog?category=Technology'} className='text-base  px-4 py-2 rounded-lg hover:bg-gray-100 duration-500 active:scale-90  hover:text-gray-900 text-gray-100 font-normal'>Technology</Link>
+                                    <Link href={'/blog?category=Education'} className='text-base px-4 py-2 rounded-lg hover:bg-gray-100 duration-500 active:scale-90  hover:text-gray-900 text-gray-100 font-normal'>Education</Link>
+                                    <Link href={'/blog?category=Business'} className='text-base px-4 py-2 rounded-lg hover:bg-gray-100 duration-500 active:scale-90  hover:text-gray-900 text-gray-100 font-normal'>Business</Link>
+                                    <Link href={'/blog?category=Sports'} className='text-base px-4 py-2 rounded-lg hover:bg-gray-100 duration-500 active:scale-90  hover:text-gray-900 text-gray-100 font-normal'>Sports</Link>
+                                    <Link href={'/blog?category=Health'} className='text-base px-4 py-2 rounded-lg hover:bg-gray-100 duration-500 active:scale-90  hover:text-gray-900 text-gray-100 font-normal'>Health</Link>
                                 </Disclosure.Panel>
                                 </Transition>
                             </Disclosure>

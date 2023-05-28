@@ -11,22 +11,22 @@ const Features = ({data}) => {
         {
           title: 'Category Navigation',
           description: 'Allow users to easily navigate between categories with clear labels and intuitive icons.',
-          icon: HiAcademicCap
+          icon: <HiAcademicCap className="h-8 w-8" aria-hidden="true" />
         },
         {
           title: 'Related Posts',
           description: 'Suggest related posts at the end of each article to encourage users to read more content and improve time spent on site.',
-          icon: HiOutlineDocumentText
+          icon: <HiAcademicCap className="h-8 w-8" aria-hidden="true" />
         },
         {
           title: 'Search Bar',
           description: 'Include a prominent search bar to help users quickly find the content they are looking for.',
-          icon: AiOutlineSearch
+          icon: <AiOutlineSearch className="h-8 w-8" aria-hidden="true" />
         },
         {
           title: 'Social Sharing',
           description: 'Make it easy for users to share articles on social media by including social sharing buttons at the top and bottom of each article.',
-          icon: BsShareFill
+          icon: <BsShareFill className="h-8 w-8" aria-hidden="true" />
         }
       ]
       ]
@@ -48,7 +48,7 @@ const Features = ({data}) => {
                             {features.map((feature) => (
                                 <div key={feature.name} className="relative flex flex-col gap-6 sm:flex-row md:flex-col lg:flex-row">
                                     <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-indigo-500 text-white sm:shrink-0">
-                                        <feature.icon className="h-8 w-8" aria-hidden="true" />
+                                        {feature.icon}
                                     </div>
                                     <div className="sm:min-w-0 sm:flex-1">
                                         <p className="text-lg font-semibold leading-8 text-gray-900">{feature.name}</p>
