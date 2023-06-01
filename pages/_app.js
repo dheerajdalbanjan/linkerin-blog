@@ -3,6 +3,8 @@ import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react';
 import '../styles/globals.css'
 import ads from '../components/ads';
+import Script from 'next/script';
+import Ads from '../components/ads';
 
 export default function App({ Component, pageProps }) {
   const router = useRouter();
@@ -31,5 +33,6 @@ export default function App({ Component, pageProps }) {
 
   }
   return <>
-  <Loading/><Component {...pageProps} /></>
+  <Loading/>
+        <Component {...pageProps} /></>
 }

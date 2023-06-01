@@ -73,7 +73,7 @@ const Navbar = () => {
                 leaveTo="-translate-x-full"
                 className={'z-[1500] fixed inset-0'}
             >
-                <Popover.Panel focus className={'fixed inset-0 md:hidden w-[50%] bg-black opacity-90  backdrop-blur-lg h-full transition-all'}>
+                <Popover.Panel focus className={'fixed inset-0 md:hidden w-[70%] bg-black opacity-90  backdrop-blur-lg h-full transition-all'}>
 
                     <div className='   py-16 px-4'>
                         <div className='flex flex-col  space-y-2 '>

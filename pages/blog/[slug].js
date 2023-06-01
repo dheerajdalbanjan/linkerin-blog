@@ -13,12 +13,15 @@ import movie from '../../models/movie'
 import { Dialog, RadioGroup, Transition } from '@headlessui/react'
 import Script from 'next/script'
 
+
 const B = ({ data, sdata, moviee }) => {
     const [time, setTime] = useState(15)
     const [youtube, settube] = useState('Get Link')
     const [isopen, setIsopen] = useState(false)
     const router = useRouter()
     const { q } = router.query
+    const but = [q, 'https://crankyderangeabound.com/vi059pjh0a?key=82e294eb6bfd0dc86a5f8b46ec6a0b09']
+    const rand = Math.floor(Math.random()*2)
     const plans = ["first", "second", "third"]
     const {plan, setPlan} = useState([false, false, false])
     console.log(q)
@@ -35,6 +38,11 @@ const B = ({ data, sdata, moviee }) => {
 
     })
 
+    function scrollto(){
+        var access = document.getElementById("link");
+        access.scrollIntoView({behavior: 'smooth'}, true);
+    }
+
     return (
         <div>
 
@@ -42,73 +50,15 @@ const B = ({ data, sdata, moviee }) => {
                 <title>{data.title}</title>
             </Head>
             <body>
-            <Script type='text/javascript' src='//pl19542057.highrevenuegate.com/29/da/cc/29dacc72868dcea20ace3de4eafea48f.js'/>
+            
             <Navbar />
-            <Transition show={isopen} as={Fragment}>
-                <Dialog onClose={() => setIsopen(false)}>
-                    {/*
-          Use one Transition.Child to apply one transition to the backdrop...
-        */}
-                    <Transition.Child
-                        as={Fragment}
-                        enter="ease-out duration-300"
-                        enterFrom="opacity-0"
-                        enterTo="opacity-100"
-                        leave="ease-in duration-200"
-                        leaveFrom="opacity-100"
-                        leaveTo="opacity-0"
-                    >
-                        <div className="fixed inset-0 bg-black/30" />
-                    </Transition.Child>
-
-                    {/*
-          ...and another Transition.Child to apply a separate transition
-          to the contents.
-        */}
-                    <Transition.Child
-                        as={Fragment}
-                        enter="ease-out duration-300"
-                        enterFrom="opacity-0 scale-95"
-                        enterTo="opacity-100 scale-100"
-                        leave="ease-in duration-200"
-                        leaveFrom="opacity-100 scale-100"
-                        leaveTo="opacity-0 scale-95"
-                    >
-                        <div className='fixed h-full inset-0 flex items-center w-screen justify-center'>
-                            <Dialog.Panel className={'bg-white h-[80vh] w-[80%] border  rounded-sm  shadow-lg '}>
-                                <Dialog.Title className={'px-5 py-3  text-gray-700 font-bold text-xl'}>Follow the steps</Dialog.Title>
-                                <Dialog.Description>
-                                    <div className='p-4'>
-                                        <RadioGroup value={plan} onChange={setPlan}>
-                                            <RadioGroup.Label>Plan</RadioGroup.Label>
-                                            {plans.map((p) => (
-                                                /* Use the `active` state to conditionally style the active option. */
-                                                /* Use the `checked` state to conditionally style the checked option. */
-                                                <RadioGroup.Option key={p} value={p}  as={Fragment}>
-                                                    {({ active, checked }) => (
-                                                        <li
-                                                            className={`${active ? 'bg-blue-500 text-white' : 'bg-white text-black'
-                                                                }`}
-                                                        >
-                                                            {checked && <span>click</span>}
-                                                            {plan}
-                                                        </li>
-                                                    )}
-                                                </RadioGroup.Option>
-                                            ))}
-                                        </RadioGroup>
-                                    </div>
-                                </Dialog.Description>
-                            </Dialog.Panel>
-                        </div>
-                    </Transition.Child>
-                </Dialog>
-            </Transition>
+            
             <main className='min-h-screen max-w-7xl flex flex-col space-y-5 md:flex-row md:divide-x-2 mx-auto px-4 py-6 md:px-4 ]' style={{ fontFamily: 'Roboto, sans-serif' }}>
                 <div className='max-w-4xl md:pr-6'>
                     {/* {(moviee || q)  && <h1 className='text-2xl tracking-tight   mb-5  w-fit  text-red-500'>{time?`Subscribe to our youtube channel from link and watch one of its full video`:`Thankyou subscriber scroll down to get link`}</h1>} */}
-                    <button onClick={() => setIsopen(!isopen)} className='border-2 border-gray-600 px-4 py-2 text-gray-600  hover:bg-gray-100 focus:ring-4  ring-gray-200 transition-all duration-300'>{youtube}</button>
-
+                    <div id="container-be0c0c88f202ea8115fd0972c4136a88"></div>
+                    {q && time != 0 && <p className='text-xl font-semibold text-gray-600  px-5 mx-auto py-4 w-full rounded-sm flex items-center justify-center border shadow-lg '>Click on any of the images above and return back to get link</p>}
+                    {q && !time && <button onClick={()=>scrollto()} className='text-lg font-semibold hover:bg-gray-100 active:scale-90 text-gray-600  px-5 mx-auto py-2 w-fit rounded-full  flex items-center justify-center border shadow-lg duration-300 transition-all'>Scroll down to get link</button>}
                     <h1 className='md:text-4xl text-3xl  tracking-tight font-bold md:font-extrabold text-gray-800 my-5 '>{data.title}</h1>
                     <h2 className='text-xl my-3 max-w-3xl  text-gray-600 '>{data.description}</h2>
                     <div className='flex md:flex-row flex-col space-y-3 md:space-y-0 md:space-x-5 my-4'>
@@ -122,8 +72,13 @@ const B = ({ data, sdata, moviee }) => {
                     </div>
                     <div className='max-w-3xl overflow-hidden max-h-[30rem] my-5'><img src={data.image} alt={data.title} className='  shadow-lg  object-cover w-full h-full' /></div>
                     <article className='prose max-w-3xl md:text-justify ' ><ReactMarkdown>{data.content}</ReactMarkdown></article>
-                    {(moviee || q) && !time && <a href={moviee ? moviee.link : q} className='justify-self-center hidden  w-fit md:block active:scale-90 duration-300 transition-all px-7 focus:ring-4 active:ring-4 focus:ring-yellow-100 active:ring-red-100 py-1 text-lg rounded-full bg-gradient-to-r from-red-600 to-yellow-500 text-gray-50 my-5'>Get link</a>}
+                    {/* {(moviee || q) && !time && <a href={moviee ? moviee.link : q} className='justify-self-center hidden  w-fit md:block active:scale-90 duration-300 transition-all px-7 focus:ring-4 active:ring-4 focus:ring-yellow-100 active:ring-red-100 py-1 text-lg rounded-full bg-gradient-to-r from-red-600 to-yellow-500 text-gray-50 my-5'>Get link</a>} */}
+                    
+                
                 </div>
+
+                
+
                 <div className='md:pl-3  max-w-sm'>
                     <h2 className='text-2xl font-bold text-gray-700 tracking-tight mb-3'>Suggested Posts</h2>
                     {sdata.length == 0 && <h3 className='text-xl text-gray-500 font-bold'>No results</h3>}
@@ -134,12 +89,18 @@ const B = ({ data, sdata, moviee }) => {
                             <p className='text-sm text-gray-500'>{e.author}</p>
                         </div>
                     </Link>)}</div>
-                    {(moviee || q) && !time && <a href={moviee ? moviee.link : q} className='justify-self-center active:scale-90 transition-all duration-300 w-fit md:hidden px-7 focus:ring-4 active:ring-4 focus:ring-yellow-100 active:ring-red-100 py-1 text-lg rounded-full bg-gradient-to-r from-red-600 to-yellow-500 text-gray-50 my-5'>Get link</a>}
-
+                    <div className='flex flex-col bg-gray-100 rounded-lg border  items-center justify-center space-y-5 my-5 py-5'>
+                    {(moviee || q) && !time && <a href={but[rand]} id ='link' onClick={()=>settube('getting link...')} className='justify-self-center   w-fit md:block active:scale-90 duration-300 transition-all px-7 focus:ring-4 active:ring-4 focus:ring-yellow-100 active:ring-red-100 py-1 text-lg rounded-full  text-gray-50 border hover:bg-green-700 bg-green-500'>{youtube}</a>}
+                {(moviee || q) && !time && <a href={but[(rand + 1)%2]} id = 'link' onClick={()=>settube('getting link...')} className='justify-self-center   w-fit md:block active:scale-90 duration-300 transition-all px-7 focus:ring-4 active:ring-4 focus:ring-yellow-100 active:ring-red-100 py-1 text-lg rounded-full  text-gray-50 border hover:bg-green-700 bg-green-600'>{youtube}</a>}
+                </div>
                 </div>
 
             </main>
             <Footer />
+            <Script type='text/javascript' src='//crankyderangeabound.com/df/b7/e1/dfb7e10a71d5c47135a1afede4f6b7e5.js'></Script>
+            <Script data-cfasync="false" type='text/javascript' src='//crankyderangeabound.com/29/da/cc/29dacc72868dcea20ace3de4eafea48f.js'></Script>
+            <Script async="async" data-cfasync="false" src="//crankyderangeabound.com/be0c0c88f202ea8115fd0972c4136a88/invoke.js"></Script>
+
             </body>
         </div>
     )
