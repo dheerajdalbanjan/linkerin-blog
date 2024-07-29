@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
 
+
 const Footer = () => {
     return (
         <footer className="text-center text-white mt-16" style={{backgroundColor:'background-color: #f1f1f1', fontFamily:'Roboto, sans-serif'}}>
