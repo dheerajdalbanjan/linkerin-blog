@@ -112,7 +112,7 @@ const Footer = () => {
             </div>
 
             <div className="text-center text-gray-700 p-4" style={{backgroundColor:'rgba(0, 0, 0, 0.2)'}}>
-                © 2021 Copyright:
+                © 2024 Copyright:
                 <Link className="text-gray-800" href="/"> LinkerIn</Link>
             </div>
         </footer>
